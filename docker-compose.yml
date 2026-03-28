@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  api-conversor:
+    build: .
+    container_name: ls-api-conversor
+    ports:
+      - "8000:8000" # Mapeia a porta 8000 do Ubuntu para a 8000 do container
+    restart: unless-stopped # Padrão Enterprise: reinicia sozinho se crachar
+    environment:
+      - MISTRAL_API_KEY=${MISTRAL_API_KEY} # Lê do seu servidor e injeta na API
+      
